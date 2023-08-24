@@ -11,3 +11,4 @@ TODO: Make my own delete note confirmation pop-up instead of using the built in 
 TODO: Turn 'New Note' and 'Take note...' into placeholders instead of text.
 TODO: Fix time format.
 TODO: Add a counter to new notes
+TODO: make an exception for when deleting a note when there's no notes

@@ -74,7 +74,7 @@ export default class NotesView {
                 </div>
 
                 <div class="notes__small-updated">
-                    ${updated.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short" })}
+                ${updated.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short" })}
                 </div>
 
 
@@ -91,7 +91,7 @@ export default class NotesView {
 
         // create list html for each element, and then insert it at the end of the list container
         for (const note of notes) {
-            const html = this._createListItemHTML(note.id, note.title, note.body, note.updated, new Date(note.updated));
+            const html = this._createListItemHTML(note.id, note.title, note.body, new Date(note.updated));
             notesListContainer.insertAdjacentHTML("beforeend", html);
 
         }
@@ -102,13 +102,6 @@ export default class NotesView {
                 this.onNoteSelect(notesListItem.dataset.noteId);
             });
 
-            notesListItem.addEventListener("dblclick", () => {
-                const doDelete = confirm("Are you sure you want to delete this note?");
-
-                if (doDelete) {
-                    this.onNoteDelete(notesListItem.dataset.noteId);
-                }
-            })
         });
     }
 

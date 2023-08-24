@@ -7,7 +7,7 @@ export default class NotesAPI {
         const notes = JSON.parse(localStorage.getItem("notesapp-notes") || "[]"); 
         // returns sorted notes.  a comparison function is passed into sort() to compare the updates dates of the notes and sorts them based on most recent changs. sorts while array
         return notes.sort((a, b) => {
-            return new Date(a.updated) > new Date(b.updated)
+            return new Date(a.updated) > new Date(b.updated) ? -1 : 1;
         });
     }
 
