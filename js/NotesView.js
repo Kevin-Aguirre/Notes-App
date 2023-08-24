@@ -104,7 +104,7 @@ export default class NotesView {
         this.root.querySelector(".notes__title").value = note.title;
         this.root.querySelector(".notes__body").value = note.body;
 
-        
+
         this.root.querySelectorAll(".notes__list-item").forEach(noteListItem => {
             noteListItem.classList.remove("notes__list-item--selected");
         });
