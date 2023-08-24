@@ -5,8 +5,12 @@ const app = new App(root);
 
 
 /*
-TODO: Attempt to add a codeblocks feature: click a button to intialize a code block, and then specify programming langauge.
-TODO: Attempt to add a bullet point feature; click on a button to make a bullet point, make another one using enter, supports indentations.
-TODO: Add a bullet point list feature
-TODO: Add a Theme Feature, this might be good in the header.
+TODO: Attempt to add a codeblocks feature: 
+TODO: Attempt to add a bullet point feature;
+TODO: Add color themes feature + Dark Mode
+TODO: Rich Text Formatting: Make text bold, italics, underlined.
+TODO: Add Tags or Categories: Dividers between notes and label them, directory system?
+TODO: Add Voice Notes
+TODO: Search notes feature
+
 */
