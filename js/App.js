@@ -19,7 +19,7 @@ export default class App {
     _refreshNotes() {
         const notes = NotesAPI.getAllNotes();
         this._setNotes(notes);
-        
+
         // sets first nots as active if notes list is not empty
         if (notes.length > 0) {
             this._setActiveNote(notes[0])
