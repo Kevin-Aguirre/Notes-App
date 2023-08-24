@@ -1,10 +1,13 @@
+// manages and updates user interface of notes app (adding, editing, and displaying notes)
+// defines and exports NotesView
 export default class NotesView {
-    constructor(root, {onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete} = {}) {
+    constructor(root, {onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete} = {}) { // root is an html element where notes view will be rendered
         this.root = root;
         this.onNoteAdd = onNoteAdd;
         this.onNoteSelect = onNoteSelect;
         this.onNoteEdit = onNoteEdit;
         this.onNoteDelete = onNoteDelete;
+        // creates the layout of the notes app, includes sidebar, button, and preview
         this.root.innerHTML = `
             <div class="notes__sidebar">
                 <button class="notes__add" type="button">Add Note</button>
@@ -16,27 +19,30 @@ export default class NotesView {
             </div>
         `;
 
+        // stores refers to add note button, input title, and input body respectively
         const btnAddNote = this.root.querySelector(".notes__add")
         const inpTitle = this.root.querySelector(".notes__title")
         const inpBody = this.root.querySelector(".notes__body")
 
+        // when add note button is clicked
         btnAddNote.addEventListener("click", () => {
             this.onNoteAdd();
 
         });
-
+        
+        //inputField acts as a temporary variable to represent inpTitle or inpBody
+        //blur even toccurs when a user interacts iwth an input field, then clicks away from it
         [inpTitle, inpBody].forEach(inputFied => {
             inputFied.addEventListener("blur", () => {
+                //value gets content of input fields, trim removes leading & trailing whitesapce
                 const updatedTitle = inpTitle.value.trim();
                 const updatedBody = inpBody.value.trim();
 
+                // notifies app when user has finsihed editiing the titel or body of a note
                 this.onNoteEdit(updatedTitle, updatedBody);
 
             });
         });
-
-
-        // this.updateNotePreviewVisibility(false);
 
     }
 
@@ -104,8 +110,4 @@ export default class NotesView {
         this.root.querySelector(".notes__preview").style.visibility = visible ? "visible" : "hidden";
     }
 
-
-
-
 }
-
