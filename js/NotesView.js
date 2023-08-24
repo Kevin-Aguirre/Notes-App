@@ -46,9 +46,11 @@ export default class NotesView {
 
     }
 
-    _createListItemHTML(id, title, body, udpated) {
+    _createListItemHTML(id, title, body, updated) {
+        //maximum note preview length before it gets turned into elipsis
         const MAX_BODY_LENGTH = 60;
 
+        // creates a list item in the notes sidebar
         return `
             <div class="notes__list-item" data-note-id="${id}">
                 <div class="notes__small-title">${title}</div>
@@ -58,7 +60,7 @@ export default class NotesView {
                 </div>
 
                 <div class="notes__small-updated">
-                    ${udpated.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short"})}
+                    ${updated.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short"})}
                 </div>
 
 
@@ -66,19 +68,21 @@ export default class NotesView {
         `;
     }
 
+    // clears exisitng note list. generates and inserts html for each note, and sets up event lsiteneres for selecting and edeelting ntoes
     updateNoteList(notes) {
         const notesListContainer = this.root.querySelector(".notes__list");
 
         // empty list
         notesListContainer.innerHTML = "";
 
+        // create list html for each element, and then insert it at the end of the list container
         for (const note of notes) {
-            const html = this._createListItemHTML(note.id, note.title, note.body, note.updated, new Date(note.udpated));
+            const html = this._createListItemHTML(note.id, note.title, note.body, note.updated, new Date(note.updated));
             notesListContainer.insertAdjacentHTML("beforeend", html);
 
         }
 
-        // Add select/delete event for each list item 
+        // adds events listeners for each note in the notes list
         notesListContainer.querySelectorAll(".notes__list-item").forEach(notesListItem => {
             notesListItem.addEventListener("click", () => {
                 this.onNoteSelect(notesListItem.dataset.noteId);
@@ -94,10 +98,13 @@ export default class NotesView {
         });
     }
 
+    //update actuve note title and body in ui 
     updateActiveNote(note) {
+        // sets value of title & body input fields to match updates values
         this.root.querySelector(".notes__title").value = note.title;
         this.root.querySelector(".notes__body").value = note.body;
 
+        
         this.root.querySelectorAll(".notes__list-item").forEach(noteListItem => {
             noteListItem.classList.remove("notes__list-item--selected");
         });
