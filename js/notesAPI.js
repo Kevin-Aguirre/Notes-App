@@ -1,3 +1,4 @@
+//backend: handles data operations: modifying local storage - adding, editing, and removing notes
 //both exports and defines NotesAPI
 export default class NotesAPI {
     // retrieves notes from local storage using key "notes-app notes", returns an empty array if no notes found

@@ -1,4 +1,4 @@
-// manages and updates user interface of notes app (adding, editing, and displaying notes)
+// frontend: tracks user interactions + manages and updates ui (user interface) of notes app (adding, editing, and displaying notes)
 // defines and exports NotesView
 export default class NotesView {
     constructor(root, {onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete} = {}) { // root is an html element where notes view will be rendered
@@ -11,6 +11,7 @@ export default class NotesView {
         this.root.innerHTML = `
             <div class="notes__sidebar">
                 <button class="notes__add" type="button">Add Note</button>
+                <button class="notes__delete" type="button">Delete Note</button>
                 <div class="notes__list"></div>
             </div>
             <div class="notes__preview">
