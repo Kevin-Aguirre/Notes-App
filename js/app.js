@@ -32,6 +32,8 @@ export default class App {
     _setNotes(notes) {
         this.notes = notes;
         this.view.updateNoteList(notes);
+        this.view.updateNotePreviewVisibility(notes.length > 0);
+
 
     }
 
@@ -39,7 +41,6 @@ export default class App {
     _setActiveNote(note) { 
         this.activeNote = note;
         this.view.updateActiveNote(note);
-        this.view.updateNotePreviewVisibility(notes.length > 0);
 
 
     }
@@ -80,7 +81,7 @@ export default class App {
 
             // handles note deletion
             onNoteDelete: noteId => {
-                NotesAPI.deleteNote(noteId);
+                NotesAPI.deleteNote(this.activeNote.id);
                 this._refreshNotes();
             },
             

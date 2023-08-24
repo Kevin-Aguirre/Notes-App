@@ -1,7 +1,9 @@
 // frontend: tracks user interactions + manages and updates ui (user interface) of notes app (adding, editing, and displaying notes)
 // defines and exports NotesView
+//root refers to the div with class of notes and id of app
+// inside isntructor we can directly grab the values of these keys
 export default class NotesView {
-    constructor(root, {onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete} = {}) { // root is an html element where notes view will be rendered
+    constructor(root, { onNoteSelect, onNoteAdd, onNoteEdit, onNoteDelete } = {}) { // root is an html element where notes view will be rendered
         this.root = root;
         this.onNoteAdd = onNoteAdd;
         this.onNoteSelect = onNoteSelect;
@@ -14,7 +16,7 @@ export default class NotesView {
                 <button class="notes__delete" type="button">Delete Note</button>
                 <div class="notes__list"></div>
             </div>
-            <div class="notes__preview">
+            <div class="notes__preview">    
                 <input class="notes__title" type="text" placeholder="New Note...">
                 <textarea class="notes__body">What's on your mind?</textarea>
             </div>
@@ -22,6 +24,7 @@ export default class NotesView {
 
         // stores refers to add note button, input title, and input body respectively
         const btnAddNote = this.root.querySelector(".notes__add")
+        const btnDeleteNote = this.root.querySelector(".notes__delete")
         const inpTitle = this.root.querySelector(".notes__title")
         const inpBody = this.root.querySelector(".notes__body")
 
@@ -30,7 +33,17 @@ export default class NotesView {
             this.onNoteAdd();
 
         });
-        
+
+        // when delete note button is clicled
+        btnDeleteNote.addEventListener("click", () => {
+            console.log("delete button has been pressed, notesView.js");
+            const doDelete = confirm(`Are you sure you want to delete the note you have selected?`);
+            if (doDelete) {
+                this.onNoteDelete();
+            };
+        });
+
+
         //inputField acts as a temporary variable to represent inpTitle or inpBody
         //blur even toccurs when a user interacts iwth an input field, then clicks away from it
         [inpTitle, inpBody].forEach(inputFied => {
@@ -61,7 +74,7 @@ export default class NotesView {
                 </div>
 
                 <div class="notes__small-updated">
-                    ${updated.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short"})}
+                    ${updated.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short" })}
                 </div>
 
 
@@ -92,14 +105,14 @@ export default class NotesView {
             notesListItem.addEventListener("dblclick", () => {
                 const doDelete = confirm("Are you sure you want to delete this note?");
 
-                if (doDelete ) {
+                if (doDelete) {
                     this.onNoteDelete(notesListItem.dataset.noteId);
                 }
             })
         });
     }
 
-    //update actuve note title and body in ui 
+    //update active note title and body in ui 
     updateActiveNote(note) {
         // sets value of title & body input fields to match updates values
         this.root.querySelector(".notes__title").value = note.title;
@@ -117,5 +130,4 @@ export default class NotesView {
     updateNotePreviewVisibility(visible) {
         this.root.querySelector(".notes__preview").style.visibility = visible ? "visible" : "hidden";
     }
-
 }
