@@ -72,11 +72,17 @@ body {
     cursor: pointer;
 }
 
-.notes__list-item:hover, .notes__list-item--selected {
+.notes__list-item--selected {
     cursor: pointer;
     background: #eeeeee;
     border-radius: 7px;
     font-weight: bold;
+}
+
+.notes__list-item:hover {
+    cursor: pointer;
+    background: #f7f7f7;
+    border-radius: 7px;
 }
 
 
