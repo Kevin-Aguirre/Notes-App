@@ -1,5 +1,5 @@
-import NotesView from "./NotesView.js";
-import NotesAPI from "./notesapi.js";
+import NotesView from "./notesView.js";
+import NotesAPI from "./notesAPI.js";
 
 // defines and export App 
 export default class App {
