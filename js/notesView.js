@@ -36,8 +36,11 @@ export default class NotesView {
 
         // when delete note button is clicled
         btnDeleteNote.addEventListener("click", () => {
-            console.log("delete button has been pressed, notesView.js")
-            this.onNoteDelete();
+            console.log("delete button has been pressed, notesView.js");
+            const doDelete = confirm(`Are you sure you want to delete the note you have selected?`);
+            if (doDelete) {
+                this.onNoteDelete();
+            };
         });
 
 
