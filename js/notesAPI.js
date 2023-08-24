@@ -1,3 +1,4 @@
+//backend: handles data operations: modifying local storage - adding, editing, and removing notes
 //both exports and defines NotesAPI
 export default class NotesAPI {
     // retrieves notes from local storage using key "notes-app notes", returns an empty array if no notes found
@@ -17,18 +18,16 @@ export default class NotesAPI {
         // if noteToSave exists in the notes local storage, note will be assigned to existing, otherwise it will be null
         const existing = notes.find(note => note.id == noteToSave.id)
 
-
         if (existing) {
             // the updated information from the noteToSave overwrite the old information of the exisitng note
             existing.title = noteToSave.title;
             existing.body = noteToSave.body;
-            existing.updated = new Date().toISOString();
+            existing.updated = new Date().toISOString();    
         } else {
             // if the id of the noteToSave doesn't match any existing notes, a new note is made to add to the notes local storage. 
             noteToSave.id = Math.floor(Math.random() * 1000000) // generate note id 
             noteToSave.updated = new Date().toISOString(); // saves current time to updated propert
             notes.push(noteToSave); // adds new note to notes
-    
         }
 
         // overwrites notes in local storage 
