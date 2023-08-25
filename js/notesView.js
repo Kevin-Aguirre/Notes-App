@@ -18,7 +18,7 @@ export default class NotesView {
             </div>
             <div class="notes__preview">    
                 <input class="notes__title" type="text" placeholder="New Note...">
-                <textarea class="notes__body">What's on your mind?</textarea>
+                <textarea class="notes__body" placeholder="What's on your mind?"></textarea>
             </div>
         `;
 
@@ -27,10 +27,10 @@ export default class NotesView {
         const btnDeleteNote = this.root.querySelector(".notes__delete")
         const inpTitle = this.root.querySelector(".notes__title")
         const inpBody = this.root.querySelector(".notes__body")
+        const sidebar = this.root.querySelector(".notes__list") //DELETEME
 
         // when add note button is clicked
         btnAddNote.addEventListener("click", () => {
-            console.log(this.root.innerHTML);
             this.onNoteAdd();
         });
 
@@ -50,11 +50,12 @@ export default class NotesView {
 
         //inputField acts as a temporary variable to represent inpTitle or inpBody
         //blur even toccurs when a user interacts iwth an input field, then clicks away from it
+
         [inpTitle, inpBody].forEach(inputFied => {
             inputFied.addEventListener("blur", () => {
-                //value gets content of input fields, trim removes leading & trailing whitesapce
+                //value gets content of input fields, trim removes leading & trailing whitesapce\
                 const updatedTitle = inpTitle.value.trim();
-                const updatedBody = inpBody.value.trim();
+                const updatedBody = inpBody.value;
 
                 // notifies app when user has finsihed editiing the titel or body of a note
                 this.onNoteEdit(updatedTitle, updatedBody);
