@@ -18,7 +18,7 @@ export default class NotesView {
             </div>
             <div class="notes__preview">    
                 <input class="notes__title" type="text" placeholder="New Note...">
-                <textarea class="notes__body">What's on your mind?</textarea>
+                <textarea class="notes__body" placeholder="What's on your mind?"></textarea>
             </div>
         `;
 
@@ -30,7 +30,6 @@ export default class NotesView {
 
         // when add note button is clicked
         btnAddNote.addEventListener("click", () => {
-            console.log(this.root.innerHTML);
             this.onNoteAdd();
         });
 
@@ -52,7 +51,7 @@ export default class NotesView {
         //blur even toccurs when a user interacts iwth an input field, then clicks away from it
         [inpTitle, inpBody].forEach(inputFied => {
             inputFied.addEventListener("blur", () => {
-                //value gets content of input fields, trim removes leading & trailing whitesapce
+                //value gets content of input fields, trim removes leading & trailing whitesapce\
                 const updatedTitle = inpTitle.value.trim();
                 const updatedBody = inpBody.value.trim();
 

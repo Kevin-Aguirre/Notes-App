@@ -57,8 +57,8 @@ export default class App {
             // handles adding a new note
             onNoteAdd: () => {
                 const newNote = {
-                    title:"New Note",
-                    body: "Take note..."
+                    title:"",
+                    body:""
                 };
 
                 // saves the note & refreshes the notes list

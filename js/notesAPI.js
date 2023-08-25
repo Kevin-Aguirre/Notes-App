@@ -20,8 +20,18 @@ export default class NotesAPI {
 
         if (existing) {
             // the updated information from the noteToSave overwrite the old information of the exisitng note
-            existing.title = noteToSave.title;
-            existing.body = noteToSave.body;
+            if (noteToSave.title) {
+                existing.title = noteToSave.title;
+            } else {
+                existing.title = "New Note..."
+            }
+
+            if (noteToSave.body) {
+                existing.body = noteToSave.body;
+            } else {
+                existing.body = "What's on your mind?"
+            }
+            
             existing.updated = new Date().toISOString();    
         } else {
             // if the id of the noteToSave doesn't match any existing notes, a new note is made to add to the notes local storage. 
