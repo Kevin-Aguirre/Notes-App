@@ -30,16 +30,20 @@ export default class NotesView {
 
         // when add note button is clicked
         btnAddNote.addEventListener("click", () => {
+            console.log(this.root.innerHTML);
             this.onNoteAdd();
-
         });
 
         // when delete note button is clicled
         btnDeleteNote.addEventListener("click", () => {
-            console.log("delete button has been pressed, notesView.js");
-            const doDelete = confirm(`Are you sure you want to delete the note you have selected?`);
-            if (doDelete) {
-                this.onNoteDelete();
+            let element = document.querySelector(".notes__small-body")
+            if (element) {
+                const doDelete = confirm(`Are you sure you want to delete the note you have selected?`);
+                if (doDelete) {
+                    this.onNoteDelete();
+                }
+            } else {
+                alert('Your Notes List is empty.')
             };
         });
 
@@ -57,7 +61,6 @@ export default class NotesView {
 
             });
         });
-
     }
 
     _createListItemHTML(id, title, body, updated) {
