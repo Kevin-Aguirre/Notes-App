@@ -10,3 +10,5 @@ TODO: Turn the notes sidebar into a dropdown menu
 TODO: Make my own delete note confirmation pop-up instead of using the built in one
 TODO: Turn 'New Note' and 'Take note...' into placeholders instead of text.
 TODO: Add a counter to new notes
+
+***temporary text, delete me***
